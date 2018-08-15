@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Invoice</title>
+  <title>YA - invoice</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,71 +10,21 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
-
 </head>
 
-<body class="container-fluid">
-  <h1>Invoice App
-    <br/>
-    <small>
-      <sub>User App</sub>
-    </small>
-  </h1>
+<body>
+  <h2>CHEque</h2>
+  <h4>create ot update</h4>
+  <form action="" id="reviewform">
+    <input type="hidden" id="hiddenId">
+    <input type="text" id="fullName">
+    <br>
+    <textarea id="mesage" cols="30" rows="10"></textarea>
+  </form>
 
-
-  <!-- add user module -->
-  <section id="add-user-module">
-    <button id="open-add-user-form-btn" class="btn" >Add user</button>
-    <form>
-      <h2>Add Cheque</h2>
-      Name:
-      <br>
-      <input type='text' data-key='name' class='user-input'>
-      <br> Cheque number
-      <br>
-      <input type='text' data-key='cheque' class='user-input'>
-      <br> Issue date
-      <br>
-      <input type='text' data-key='issue' class='user-input'>
-      <br>
-      End Date <br>
-      <input type="text" data-key='end' class="user-input">
-      <button type='button' id="add-user-btn" class="btn">add user</button>
-    </form>
-  </section>
-
-  <!-- edit user module -->
-  <section id="edit-user-module" class="form-group">
-    <form>
-      <h2>Edit user</h2>
-      <input type="hidden" class="edit-userid"> Name:
-      <br>
-      <input type='text' data-key='name' class='edit-user-input'>
-      <br> Cheque number:
-      <br>
-      <input type='text' data-key='cheque' class='edit-user-input'>
-      <br> Issue date:
-      <br>
-      <input type='text' data-key='issue' class='edit-user-input'>
-      <br>
-      end date <br>
-      <input type="text" name="end" class="edit-user-input">
-      <button type='button' id="edit-user-btn" class="btn">save</button>
-    </form>
-  </section>
-
-
-  <!-- show user module -->
-  <ul id="user-list"></ul>
-  <div id="user-detail"></div>
-
-
-  </section>
+  <button type="submit" class="btn btn-success">ADD / UPDATE</button>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="app.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
