@@ -7,3 +7,27 @@ var config = {
     messagingSenderId: "531611377260"
 };
 firebase.initializeApp(config);
+
+var db = firebase.database();
+
+//create
+
+var reviewForm = document.getElementById('reviewForm');
+var fullname = document.getElementById('fullname');
+var message = document.getElementById('message');
+var hiddenId = document.getElementById('hiddenId');
+
+reviewForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!fullname.value || !message.value) return null
+    var id = hiddenId.value || Date.now;
+
+    db.ref('reviews' / +id).set({
+        fullname: fullname.value,
+        message: message.value
+    });
+
+    fullname.value = '';
+    message.value = '';
+    hiddenId.value = '';
+});
