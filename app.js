@@ -10,73 +10,103 @@ firebase.initializeApp(config);
 
 var db = firebase.database();
 
-//create
+// CREATE REWIEW
 
 var reviewForm = document.getElementById('reviewForm');
-var fullname = document.getElementById('fullname');
-var message = document.getElementById('message');
+var fullName = document.getElementById('name');
+var cheque = document.getElementById('cheque');
+var issue = document.getElementById('issue');
+var expiry = document.getElementById('expire');
+var desc = document.getElementById('desc');
 var hiddenId = document.getElementById('hiddenId');
 
 reviewForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (!fullname.value || !message.value) return null
-    var id = hiddenId.value || Date.now;
 
-    db.ref('reviews' / +id).set({
-        fullname: fullname.value,
-        message: message.value
+    if (!fullName.value || !issue.value || !cheque.value || !expiry.value || !desc.value) return null
+
+    var id = hiddenId.value || Date.now()
+
+    db.ref('cheques/' + id).set({
+        fullName: fullName.value,
+        cheque: cheque.value,
+        issue: issue.value,
+        expiry: expiry.value,
+        desc: desc.value
     });
 
-    fullname.value = '';
-    message.value = '';
+    fullName.value = '';
+    cheque.value = '';
+    issue.value = '';
+    expiry.value = '';
+    desc.value = '';
     hiddenId.value = '';
 });
 
-//read
+// READ REVEIWS
 
-var reviews = document.getElementById('reviews');
-var reviewsRef = db.ref('/reviews');
+var cheques = document.getElementById('cheques');
+var chequesRef = db.ref('/cheques');
 
-reviewsRef.on('child_added', (data) => {
-    var li = data.key;
-    li.innerHTML = reviewTemplate(data.val())
-    reviews.appendChild(li);
+chequesRef.on('child_added', (data) => {
+    var li = document.createElement('li');
+    li.id = data.key;
+    li.innerHTML = reviewTemplate(data.val());
+    cheques.appendChild(li);
 });
 
-reviewsRef.on('child_changed', (data) => {
+chequesRef.on('child_changed', (data) => {
     var reviewNode = document.getElementById(data.key);
     reviewNode.innerHTML = reviewTemplate(data.val());
 });
 
-reviewsRef.on('child_removed', (data) => {
+chequesRef.on('child_removed', (data) => {
     var reviewNode = document.getElementById(data.key);
     reviewNode.parentNode.removeChild(reviewNode);
 });
 
-reviews.addEventListener('click', (e) => {
+cheques.addEventListener('click', (e) => {
     var reviewNode = e.target.parentNode
 
-    //update
+    // UPDATE REVEIW
     if (e.target.classList.contains('edit')) {
-        fullname.value = reviewNode.querySelector('.fullname').innerText;
-        message.value = reviewNode.querySelector('.message').innerText;
+        fullName.value = reviewNode.querySelector('.name').innerText;
+        cheque.value = reviewNode.querySelector('.cheque').innerText;
+        issue.value = reviewNode.querySelector('.issue').innerText;
+        expiry.value = reviewNode.querySelector('.expire').innerText;
+        desc.value = reviewNode.querySelector('.desc').innerText;
         hiddenId.value = reviewNode.id;
     }
 
-    //delete
-
+    // DELETE REVEIW
     if (e.target.classList.contains('delete')) {
         var id = reviewNode.id;
-        db.ref('reviews/'+id).remove;
+        db.ref('cheques/' + id).remove();
     }
 });
 
-//review template
+function reviewTemplate({
+    fullName,
+    cheque,
+    issue,
+    expiry,
+    desc
+}) {
+    return `
+    <div class="container-fluid table table-dark">
+    <div class="">
+    <div class='fullName'>Name:${fullName}</div>
+    <div class='message'>Cheque No:${cheque}</div>
+    <div class='message'>Issued on:${issue}</div>
+    <div class='message'>Expire on: ${expiry}</div>
+    <div class='message'>Description: ${desc}</div>
+    <button class='btn btn-warning edit mb-2'>Edit</button>
+    <button class='btn btn-danger delete mb-2'>Delete</button>
+    </div>
+    </div>
+  `
 
-function reviewTemplate({fullname,message}){
-    return
-    <div class='fullname'>${fulname}</div>
-    <div class='message'>${message}</div>
-    <button class='btn btn-warning edit'>Edit</button>
-    <button class='btn btn-danger delete'>Delete</button>
+
+
+
 };
