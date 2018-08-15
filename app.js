@@ -70,3 +70,13 @@ reviews.addEventListener('click', (e) => {
         db.ref('reviews/'+id).remove;
     }
 });
+
+//review template
+
+function reviewTemplate({fullname,message}){
+    return
+    <div class='fullname'>${fulname}</div>
+    <div class='message'>${message}</div>
+    <button class='btn btn-warning edit'>Edit</button>
+    <button class='btn btn-danger delete'>Delete</button>
+};
