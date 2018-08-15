@@ -12,17 +12,23 @@
     crossorigin="anonymous">
 </head>
 
-<body>
+<body class="container-fluid">
   <h2>CHEque</h2>
   <h4>create ot update</h4>
-  <form action="" id="reviewform">
+  
+  <div class="form-group">
+  <form class="form-control" id="reviewForm">
     <input type="hidden" id="hiddenId">
-    <input type="text" id="fullName">
+    <input type="text" id="fullName" class="form-control form-control-sm">
     <br>
-    <textarea id="mesage" cols="30" rows="10"></textarea>
-  </form>
+    <textarea id="mesage" cols="30" rows="10" class="form-control form-control-sm"></textarea>
 
-  <button type="submit" class="btn btn-success">ADD / UPDATE</button>
+    <button type="submit" class="btn btn-success">ADD / UPDATE</button>
+  </form>
+</div>
+
+<h4>Read / Delete</h4>
+<ul id="reviews"></ul>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
