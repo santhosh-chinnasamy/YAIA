@@ -40,19 +40,21 @@
           <!-- issued -->
           <div class="row">
             <label for="issued" class="col-sm-4">Issued on</label>
-            <input type="text" class="form-control col-sm-7 validate" id="issue">
+            <input type="text" class="form-control col-sm-7 validate" name="issue" id="issue">
           </div>
           <br>
           <!-- expire on -->
           <div class="row">
-              <label for="expire" class="col-sm-4">Expire on</label>
-              <input type="text" class="form-control col-sm-7 validate" id="expire">
-            </div> <br>
-            <!-- description -->
-            <div class="row">
-                <label for="desc" class="col-sm-4">Description</label>
-                <textarea name="desc" id="desc" class="form-control"></textarea>
-              </div> <br>
+            <label for="expire" class="col-sm-4">Expire on</label>
+            <input type="text" class="form-control col-sm-7 validate" id="expire">
+          </div>
+          <br>
+          <!-- description -->
+          <div class="row">
+            <label for="desc" class="col-sm-4">Description</label>
+            <textarea name="desc" id="desc" class="form-control"></textarea>
+          </div>
+          <br>
           <button type="submit" class="btn bg-info">submit</button>
 
         </form>
@@ -73,13 +75,20 @@
       <button type="submit" class="btn btn-success">ADD / UPDATE</button>
     </form>
   </div> -->
-<br>
-<br><br>    <h4>Read / Delete</h4><br>
-    <ul id="cheques"></ul>
-  <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+  <br>
+  <br>
+  <br>
+  <h4>Read / Delete</h4>
+  <br>
+  <ul id="cheques"></ul>
 
-  <script src="app.js"></script>
   <!-- Optional JavaScript -->
+  <script>
+  
+
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+  <script src="app.js"></script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

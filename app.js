@@ -85,26 +85,16 @@ cheques.addEventListener('click', (e) => {
     }
 });
 
-function reviewTemplate({
-    fullName,
-    cheque,
-    issue,
-    expiry,
-    desc
-}) {
+function reviewTemplate({fullName,cheque,issue,expiry,desc}) {
     return `
-    <div class="container-fluid table table-dark">
-    <div class="">
-    <div class='fullName'>Name:${fullName}</div>
-    <div class='message'>Cheque No:${cheque}</div>
-    <div class='message'>Issued on:${issue}</div>
-    <div class='message'>Expire on: ${expiry}</div>
-    <div class='message'>Description: ${desc}</div>
+    <div class='name'>${fullName}</div>
+    <div class='cheque'>${cheque}</div>
+    <div class='issue'>${issue}</div>
+    <div class='expire'>${expiry}</div>
+    <div class='desc'>${desc}</div>
     <button class='btn btn-warning edit mb-2'>Edit</button>
     <button class='btn btn-danger delete mb-2'>Delete</button>
-    </div>
-    </div>
-  `
+    `
 
 
 
