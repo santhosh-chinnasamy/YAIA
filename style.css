@@ -1,15 +1,19 @@
 /* https://github.com/VoloshinS/firebase-crud-example */
 
+body{
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #e24e42;
+    max-width: 100%;
+
+}
+
 li
 {
     list-style: none;
 }
 
 .card{
-    color: blue;
-}
-
-.table
-{
-    border-radius: 10px;
+   background-color: antiquewhite;
+   text-align: center;
+   width: auto;
 }

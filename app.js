@@ -17,13 +17,14 @@ var fullName = document.getElementById('name');
 var cheque = document.getElementById('cheque');
 var issue = document.getElementById('issue');
 var expiry = document.getElementById('expire');
-var desc = document.getElementById('desc');
+var amount = document.getElementById('amount');
+// var desc = document.getElementById('desc');
 var hiddenId = document.getElementById('hiddenId');
 
 reviewForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    if (!fullName.value || !issue.value || !cheque.value || !expiry.value || !desc.value) return null
+    if (!fullName.value || !issue.value || !cheque.value || !expiry.value || !amount.value) return "fill details"
 
     var id = hiddenId.value || Date.now()
 
@@ -32,14 +33,16 @@ reviewForm.addEventListener('submit', (e) => {
         cheque: cheque.value,
         issue: issue.value,
         expiry: expiry.value,
-        desc: desc.value
+        amount: amount.value
+        // desc: desc.value
     });
 
     fullName.value = '';
     cheque.value = '';
     issue.value = '';
     expiry.value = '';
-    desc.value = '';
+    // desc.value = '';
+    amount.value = '';
     hiddenId.value = '';
 });
 
@@ -74,7 +77,8 @@ cheques.addEventListener('click', (e) => {
         cheque.value = reviewNode.querySelector('.cheque').innerText;
         issue.value = reviewNode.querySelector('.issue').innerText;
         expiry.value = reviewNode.querySelector('.expire').innerText;
-        desc.value = reviewNode.querySelector('.desc').innerText;
+        // desc.value = reviewNode.querySelector('.desc').innerText;
+        desc.value = reviewNode.querySelector('.amount').innerText;
         hiddenId.value = reviewNode.id;
     }
 
@@ -85,13 +89,20 @@ cheques.addEventListener('click', (e) => {
     }
 });
 
-function reviewTemplate({fullName,cheque,issue,expiry,desc}) {
+function reviewTemplate({
+    fullName,
+    cheque,
+    issue,
+    expiry,
+    amount
+    // desc
+}) {
     return `
-    <div class='name'>${fullName}</div>
-    <div class='cheque'>${cheque}</div>
-    <div class='issue'>${issue}</div>
-    <div class='expire'>${expiry}</div>
-    <div class='desc'>${desc}</div>
+    <div class='name'> Name: ${fullName}</div>
+    <div class='cheque'>Cheque No: ${cheque}</div>
+    <div class='issue'>Issued on: ${issue}</div>
+    <div class='expire'>Expire On: ${expiry}</div>
+    <div class='amount'>Amount: ${amount}</div>
     <button class='btn btn-warning edit mb-2'>Edit</button>
     <button class='btn btn-danger delete mb-2'>Delete</button>
     `

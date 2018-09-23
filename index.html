@@ -14,77 +14,82 @@
 
 </head>
 
-<body class="container-fluid">
-  <h2>CHEque</h2>
-  <h4>create ot update</h4>
-
+<body>
+  <h2 class="text-center">Invoice Handler</h2>
+  <h5 class="text-center">Bagavath Amman Tex & Traders</h5>
   <div class="container">
-    <div class="card align-items-center">
+    <div class="card">
       <div class="card-content">
         <div class="card-title ">Yet Another Invoice App</div>
-        <form class="form-group" id="reviewForm">
+        <form class="form-group" id="reviewForm" autocomplete="off">
           <input type="hidden" id="hiddenId">
           <!-- name -->
           <div class="row">
             <label for="name" class="col-sm-4">Name</label>
-            <input type="text" class="form-control col-sm-7 validate" id="name">
+            <input type="text" class="form-control col-sm-7 validate" id="name" placeholder="enter name">
           </div>
           <br>
 
           <!-- cheque number -->
           <div class="row">
             <label for="cheque" class="col-sm-4">Cheque No.</label>
-            <input type="text" class="form-control col-sm-7 validate" id="cheque">
+            <input type="text" class="form-control col-sm-7 validate" id="cheque" pattern="\d{1,7}" placeholder="enter cheque number">
           </div>
           <br>
           <!-- issued -->
           <div class="row">
             <label for="issued" class="col-sm-4">Issued on</label>
-            <input type="text" class="form-control col-sm-7 validate" name="issue" id="issue">
+            <input type="date" class="form-control col-sm-7 validate" name="issue" id="issue">
           </div>
           <br>
           <!-- expire on -->
           <div class="row">
             <label for="expire" class="col-sm-4">Expire on</label>
-            <input type="text" class="form-control col-sm-7 validate" id="expire">
+            <input type="date" class="form-control col-sm-7 validate" id="expire">
           </div>
           <br>
-          <!-- description -->
+
+          <!-- amount -->
           <div class="row">
-            <label for="desc" class="col-sm-4">Description</label>
-            <textarea name="desc" id="desc" class="form-control"></textarea>
+            <label for="amount" class="col-sm-4">Amount</label>
+            <input type="text" class="form-control col-sm-7 validate" id="amount" pattern="\d{1,8}" placeholder="enter amount">
           </div>
           <br>
+
+          <!-- description -->
+          <!-- <div class="row">
+            <label for="desc" class="col-sm-4">Description</label>
+            <textarea name="desc" id="desc" class="form-control col-sm-7" rows="2" placeholder="optional"></textarea>
+          </div>
+          <br> -->
           <button type="submit" class="btn bg-info">submit</button>
 
         </form>
       </div>
     </div>
   </div>
+  </div>
 
 
   <br>
-  <!-- <div class="row">
-    <form class="form-control" id="reviewForm">
-      <input type="hidden" id="hiddenId">
-      <label for="name" class="col-md-2">Name</label>
-      <input type="text" id="fullName" class="form-control col-md-4 ">
-      <br>
-      <textarea id="message" cols="30" rows="10" class="form-control form-control-sm"></textarea>
 
-      <button type="submit" class="btn btn-success">ADD / UPDATE</button>
-    </form>
-  </div> -->
   <br>
   <br>
   <br>
-  <h4>Read / Delete</h4>
-  <br>
-  <ul id="cheques"></ul>
+  <div class="container card">
+    <!-- <img class="card-img-top" src="holder.js/100x180/" alt=""> -->
+    <div class="card-body">
+      <h4 class="card-title">Read / Delete</h4>
+      <p class="card-text">
+        <ul id="cheques"></ul>
+      </p>
+    </div>
+  </div>
 
+  </div>
   <!-- Optional JavaScript -->
   <script>
-  
+
 
   </script>
   <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
