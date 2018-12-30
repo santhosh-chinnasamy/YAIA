@@ -24,9 +24,9 @@ var hiddenId = document.getElementById('hiddenId');
 reviewForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    if (!fullName.value || !issue.value || !cheque.value || !expiry.value || !amount.value) return "fill details"
+    if (!fullName.value || !issue.value || !cheque.value || !expiry.value || !amount.value) return "fill details";
 
-    var id = hiddenId.value || Date.now()
+    var id = hiddenId.value || Date.now();
 
     db.ref('cheques/' + id).set({
         fullName: fullName.value,
@@ -52,7 +52,7 @@ var cheques = document.getElementById('cheques');
 var chequesRef = db.ref('/cheques');
 
 chequesRef.on('child_added', (data) => {
-    var li = document.createElement('li');
+    var li = document.createElement('tr');
     li.id = data.key;
     li.innerHTML = reviewTemplate(data.val());
     cheques.appendChild(li);
@@ -69,7 +69,7 @@ chequesRef.on('child_removed', (data) => {
 });
 
 cheques.addEventListener('click', (e) => {
-    var reviewNode = e.target.parentNode
+    var reviewNode = e.target.parentNode;
 
     // UPDATE REVEIW
     if (e.target.classList.contains('edit')) {
@@ -78,7 +78,7 @@ cheques.addEventListener('click', (e) => {
         issue.value = reviewNode.querySelector('.issue').innerText;
         expiry.value = reviewNode.querySelector('.expire').innerText;
         // desc.value = reviewNode.querySelector('.desc').innerText;
-        desc.value = reviewNode.querySelector('.amount').innerText;
+        amount.value = reviewNode.querySelector('.amount').innerText;
         hiddenId.value = reviewNode.id;
     }
 
@@ -98,16 +98,34 @@ function reviewTemplate({
     // desc
 }) {
     return `
-    <div class='name'> Name: ${fullName}</div>
-    <div class='cheque'>Cheque No: ${cheque}</div>
-    <div class='issue'>Issued on: ${issue}</div>
-    <div class='expire'>Expire On: ${expiry}</div>
-    <div class='amount'>Amount: ${amount}</div>
+    <td class="name">${fullName}</td>
+    <td class="cheque">${cheque}</td>
+    <td class="issue">${issue}</td>
+    <td class="expire">${expiry}</td>
+    <td class="amount">${amount}</td>
+    <button class='btn btn-warning edit mb-3'>Edit</button>
+    <button class='btn btn-danger delete mb-3'>Delete</button>
+    `;
+
+};
+
+/*
+<label>Name: </label> <div class='name'>${fullName}</div>
+    <label>Cheque No:</label> <div class='cheque'>${cheque}</div>
+    <label>Issued on:</label><div class='issue'>${issue}</div>
+    <label>Expire On:</label> <div class='expire'>${expiry}</div>
+    <label>Amount:</label><div class='amount'>${amount}</div>
     <button class='btn btn-warning edit mb-2'>Edit</button>
     <button class='btn btn-danger delete mb-2'>Delete</button>
     `
+*/
 
-
-
-
-};
+/*
+    <td class="name">${fullName}</td>
+    <td class="cheque">${cheque}</td>
+    <td class="issue">${issue}</td>
+    <td class="expire">${expiry}</td>
+    <td class="amount">${amount}</td>
+    <td><button class='btn btn-warning edit mb-2'>Edit</button></td>
+    <td><button class='btn btn-danger delete mb-2'>Delete</button></td>
+*/

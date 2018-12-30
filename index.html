@@ -19,40 +19,42 @@
   <h5 class="text-center">Bagavath Amman Tex & Traders</h5>
   <div class="container">
     <div class="card">
-      <div class="card-content">
-        <div class="card-title ">Yet Another Invoice App</div>
+      <div class="card-content form">
+        
         <form class="form-group" id="reviewForm" autocomplete="off">
           <input type="hidden" id="hiddenId">
           <!-- name -->
           <div class="row">
             <label for="name" class="col-sm-4">Name</label>
-            <input type="text" class="form-control col-sm-7 validate" id="name" placeholder="enter name">
+            <input type="text" class="form-control col-sm-4 validate" id="name" placeholder="enter name" autocomplete="off">
           </div>
           <br>
 
           <!-- cheque number -->
           <div class="row">
             <label for="cheque" class="col-sm-4">Cheque No.</label>
-            <input type="text" class="form-control col-sm-7 validate" id="cheque" pattern="\d{1,7}" placeholder="enter cheque number">
+            <input type="text" class="form-control col-sm-4 validate" id="cheque" pattern="\d{1,7}" placeholder="enter cheque number"
+              autocomplete="off">
           </div>
           <br>
           <!-- issued -->
           <div class="row">
             <label for="issued" class="col-sm-4">Issued on</label>
-            <input type="date" class="form-control col-sm-7 validate" name="issue" id="issue">
+            <input type="date" class="form-control col-sm-4 validate" name="issue" id="issue" autocomplete="off">
           </div>
           <br>
           <!-- expire on -->
           <div class="row">
             <label for="expire" class="col-sm-4">Expire on</label>
-            <input type="date" class="form-control col-sm-7 validate" id="expire">
+            <input type="date" class="form-control col-sm-4 validate" id="expire" autocomplete="off">
           </div>
           <br>
 
           <!-- amount -->
           <div class="row">
             <label for="amount" class="col-sm-4">Amount</label>
-            <input type="text" class="form-control col-sm-7 validate" id="amount" pattern="\d{1,8}" placeholder="enter amount">
+            <input type="text" class="form-control col-sm-4 validate" id="amount" pattern="\d{1,8}" placeholder="enter amount"
+              autocomplete="off">
           </div>
           <br>
 
@@ -62,7 +64,7 @@
             <textarea name="desc" id="desc" class="form-control col-sm-7" rows="2" placeholder="optional"></textarea>
           </div>
           <br> -->
-          <button type="submit" class="btn bg-info">submit</button>
+          <button type="submit" class="btn bg-success">submit</button>
 
         </form>
       </div>
@@ -77,12 +79,28 @@
   <br>
   <br>
   <div class="container card">
-    <!-- <img class="card-img-top" src="holder.js/100x180/" alt=""> -->
     <div class="card-body">
       <h4 class="card-title">Read / Delete</h4>
-      <p class="card-text">
-        <ul id="cheques"></ul>
-      </p>
+      <div class="container">
+        <table class="table table-hover table-responsive">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Name</th>
+              <th>Cheque No</th>
+              <th>Issue Date</th>
+              <th>Expiry Date</th>
+              <th>Amount</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="cheques">
+          </tbody>
+        </table>
+      </div>
+
+
     </div>
   </div>
 
@@ -93,6 +111,7 @@
 
   </script>
   <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+  <script src="http://www.datejs.com/build/date.js" type="text/javascript"></script>
   <script src="app.js"></script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
